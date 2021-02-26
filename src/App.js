@@ -1,23 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { AdminPassword } from './components/adminPassword.component';
+import { Dashboard } from './components/dashboard.component';
+
+const useToken = () => {
+  const getToken = () => {
+    const tokenString = localStorage.getItem('token');
+    const userToken = JSON.parse(tokenString);
+    return userToken;
+  };
+
+  const [token, setToken] = useState(getToken());
+
+  const saveToken = (userToken) => {
+    localStorage.setItem('token', JSON.stringify(userToken));
+    setToken(userToken);
+  };
+
+  return {
+    setToken: saveToken,
+    token,
+  };
+};
 
 function App() {
+  const { token, setToken } = useToken();
+
+  if (!token) {
+    return <AdminPassword setToken={setToken} />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/">
+            <Dashboard />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
