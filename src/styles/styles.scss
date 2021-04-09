@@ -5,8 +5,14 @@
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  background: rgb(245, 245, 245);
+}
+
 $green: #00b183;
 $darkgreen: #038b67;
 $gray: #d3d3d3;
 
 @import "password";
+@import "navbar";
+@import "dashboard";

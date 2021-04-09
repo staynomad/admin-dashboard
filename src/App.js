@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { AdminPassword } from "./components/adminPassword.component";
-import { Dashboard } from "./components/dashboard.component";
+import AdminPassword from "./pages/AdminPassword";
+import Dashboard from "./pages/Dashboard";
 
 import "./styles/styles.css";
 

@@ -3,7 +3,7 @@ import axios from "axios";
 
 import logo from "../assets/nomad.svg";
 
-export const AdminPassword = ({ setToken }) => {
+const AdminPassword = ({ setToken }) => {
   const [password, setPassword] = useState();
 
   const handleSubmit = async (e) => {
@@ -39,3 +39,5 @@ export const AdminPassword = ({ setToken }) => {
     </div>
   );
 };
+
+export default AdminPassword;

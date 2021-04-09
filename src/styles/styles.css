@@ -6,9 +6,13 @@
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  background: whitesmoke;
+}
+
 .password-page-screen {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,6 +39,7 @@
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 20px rgba(167, 167, 167, 0.411);
           box-shadow: 3px 3px 20px rgba(167, 167, 167, 0.411);
+  background: white;
 }
 
 .password-page-container img {
@@ -50,7 +55,7 @@
 .password-page-container input {
   background: transparent;
   border: none;
-  border: 2px solid #d3d3d3;
+  border: 2px solid #d3d3d3 !important;
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -62,6 +67,10 @@
 
 .password-page-container input:focus {
   border: 2px solid #00b183;
+}
+
+.password-page-container input:required {
+  border-color: #d3d3d3;
 }
 
 .password-page-container input::-webkit-input-placeholder {
@@ -89,9 +98,45 @@
   border-radius: 8px;
   margin: 10px 0;
   cursor: pointer;
+  outline: none;
 }
 
 .password-page-container button:hover {
   background: #038b67;
+}
+
+.navbar-container {
+  background: white;
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20px;
+}
+
+.navbar-container img {
+  height: 50px;
+}
+
+.navbar-container h1 {
+  cursor: pointer;
+}
+
+.dashboard-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 /*# sourceMappingURL=styles.css.map */

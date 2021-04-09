@@ -1,0 +1,14 @@
+.navbar-container {
+  background: white;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  img {
+    height: 50px;
+  }
+  h1 {
+    cursor: pointer;
+  }
+}
