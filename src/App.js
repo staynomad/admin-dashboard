@@ -1,12 +1,13 @@
-import './App.css';
-import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { AdminPassword } from './components/adminPassword.component';
-import { Dashboard } from './components/dashboard.component';
+import React, { useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { AdminPassword } from "./components/adminPassword.component";
+import { Dashboard } from "./components/dashboard.component";
+
+import "./styles/styles.css";
 
 const useToken = () => {
   const getToken = () => {
-    const tokenString = localStorage.getItem('token');
+    const tokenString = localStorage.getItem("token");
     const userToken = JSON.parse(tokenString);
     return userToken;
   };
@@ -14,7 +15,7 @@ const useToken = () => {
   const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken) => {
-    localStorage.setItem('token', JSON.stringify(userToken));
+    localStorage.setItem("token", JSON.stringify(userToken));
     setToken(userToken);
   };
 
