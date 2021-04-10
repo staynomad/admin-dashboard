@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import AdminPassword from "./pages/AdminPassword";
 import Dashboard from "./pages/Dashboard";
+import Reservations from "./pages/Reservations";
 
 import "./styles/styles.css";
 
@@ -28,7 +29,8 @@ const useToken = () => {
 function App() {
   const { token, setToken } = useToken();
 
-  if (!token) {
+  if (token) {
+    // if (!token) {
     return <AdminPassword setToken={setToken} />;
   }
 
@@ -36,9 +38,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route path="/">
-            <Dashboard />
-          </Route>
+          <Route path="/" exact component={Dashboard} />
+          <Route path="/reservations" exact component={Reservations} />
         </Switch>
       </BrowserRouter>
     </div>

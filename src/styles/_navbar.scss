@@ -1,14 +1,22 @@
 .navbar-container {
   background: white;
-  height: 70px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  box-shadow: 3px 3px 20px rgba(211, 211, 211, 0.103);
+
   img {
-    height: 50px;
+    height: 45px;
   }
-  h1 {
+}
+
+.navbar-links {
+  a {
     cursor: pointer;
+    text-decoration: none;
+    color: $green;
+    margin-left: 35px;
   }
 }

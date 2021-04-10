@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import logo from "../assets/nomad.svg";
 
 const Navbar = () => {
@@ -6,7 +8,8 @@ const Navbar = () => {
     <div className="navbar-container">
       <img src={logo} alt="" />
       <div className="navbar-links">
-        <h1>Reservations</h1>
+        <Link to="/reservations">Dashboard</Link>
+        <Link to="/reservations">Reservations</Link>
       </div>
     </div>
   );

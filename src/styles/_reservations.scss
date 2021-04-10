@@ -1,0 +1,12 @@
+.reservations-page-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.reservations-container {
+  margin: 2rem auto;
+  flex: 1;
+  background: white;
+}

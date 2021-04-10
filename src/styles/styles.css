@@ -107,7 +107,7 @@ body {
 
 .navbar-container {
   background: white;
-  height: 70px;
+  height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -118,14 +118,19 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0 20px;
+  -webkit-box-shadow: 3px 3px 20px rgba(211, 211, 211, 0.103);
+          box-shadow: 3px 3px 20px rgba(211, 211, 211, 0.103);
 }
 
 .navbar-container img {
-  height: 50px;
+  height: 45px;
 }
 
-.navbar-container h1 {
+.navbar-links a {
   cursor: pointer;
+  text-decoration: none;
+  color: #00b183;
+  margin-left: 35px;
 }
 
 .dashboard-screen {
@@ -138,5 +143,25 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.reservations-page-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.reservations-container {
+  margin: 2rem auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: white;
 }
 /*# sourceMappingURL=styles.css.map */
