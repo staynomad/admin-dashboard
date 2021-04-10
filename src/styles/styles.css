@@ -118,8 +118,8 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0 20px;
-  -webkit-box-shadow: 3px 3px 20px rgba(211, 211, 211, 0.103);
-          box-shadow: 3px 3px 20px rgba(211, 211, 211, 0.103);
+  -webkit-box-shadow: 5px 5px 20px rgba(202, 202, 202, 0.411);
+          box-shadow: 5px 5px 20px rgba(202, 202, 202, 0.411);
 }
 
 .navbar-container img {
@@ -162,6 +162,52 @@ body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  width: 90%;
   background: white;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
+          box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
+  padding: 15px;
+}
+
+.reservations-container h1 {
+  font-weight: 600;
+  color: #2a2a2a;
+  font-size: 1.5rem;
+}
+
+.reservations-table-container {
+  height: auto;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.reservations-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reservations-table-container table td,
+.reservations-table-container table th {
+  text-align: left;
+  padding: 5px;
+}
+
+.reservations-table-container table th {
+  font-weight: 500;
+}
+
+.reservations-table-container table td {
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.reservations-table-container table tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+.reservations-table-header td,
+.reservations-table-header th {
+  border-bottom: 1px solid #2a2a2a;
 }
 /*# sourceMappingURL=styles.css.map */

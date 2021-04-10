@@ -8,5 +8,46 @@
 .reservations-container {
   margin: 2rem auto;
   flex: 1;
+  width: 90%;
   background: white;
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
+  padding: 15px;
+  h1 {
+    font-weight: 600;
+    color: $black;
+    font-size: 1.5rem;
+  }
+}
+
+.reservations-table-container {
+  height: auto;
+  width: 100%;
+  margin-top: 1rem;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    td,
+    th {
+      text-align: left;
+      padding: 5px;
+    }
+    th {
+      font-weight: 500;
+    }
+    td {
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+    tr:nth-child(even) {
+      background-color: rgb(240, 240, 240);
+    }
+  }
+}
+
+.reservations-table-header {
+  td,
+  th {
+    border-bottom: 1px solid $black;
+  }
 }
