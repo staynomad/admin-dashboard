@@ -1,7 +1,16 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 
 const Reservations = () => {
+  useEffect(() => {
+    const getReservations = async () => {
+      const res = await axios.get("http://localhost:8080/reservation");
+      console.log(res.data);
+    };
+    getReservations();
+  }, []);
+
   return (
     <div className="reservations-page-screen">
       <Navbar />
