@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
-import _ from "lodash";
+import _, { filter } from "lodash";
 
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import Navbar from "../components/Navbar";
 
 const Reservations = () => {
   const [reservations, setReservations] = useState([]);
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [filterActive, setFilterActive] = useState(null);
 
   useEffect(() => {
     const getReservations = async () => {
@@ -29,7 +33,57 @@ const Reservations = () => {
     <div className="reservations-page-screen">
       <Navbar />
       <div className="reservations-container">
-        <h1>Reservations</h1>
+        <div className="reservations-container-header">
+          <h1>Reservations</h1>
+          <ClickAwayListener onClickAway={() => setFilterOpen(false)}>
+            <div style={{ position: "relative" }}>
+              <div
+                onClick={() => setFilterOpen(!filterOpen)}
+                className="reservations-dropdown-button"
+              >
+                <p>{`Filter: ${
+                  filterActive === null
+                    ? "All"
+                    : filterActive === true
+                    ? "Active"
+                    : "Expired"
+                }`}</p>
+                <ArrowDropDownIcon />
+              </div>
+              {filterOpen && (
+                <div className="reservations-dropdown-container">
+                  <div
+                    className="reservation-dropdown-option"
+                    onClick={() => {
+                      setFilterOpen(false);
+                      setFilterActive(null);
+                    }}
+                  >
+                    <p>All</p>
+                  </div>
+                  <div
+                    className="reservation-dropdown-option"
+                    onClick={() => {
+                      setFilterOpen(false);
+                      setFilterActive(true);
+                    }}
+                  >
+                    <p>Active</p>
+                  </div>
+                  <div
+                    className="reservation-dropdown-option"
+                    onClick={() => {
+                      setFilterOpen(false);
+                      setFilterActive(false);
+                    }}
+                  >
+                    <p>Expired</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </ClickAwayListener>
+        </div>
         <div className="reservations-table-container">
           <table>
             <tr className="reservations-table-header">
@@ -49,51 +103,61 @@ const Reservations = () => {
                 reservations,
                 [(reservation) => new Date(reservation.createdAt)],
                 ["desc"]
-              ).map((reservation) => (
-                <tr key={reservation._id}>
-                  <td>{moment(reservation.createdAt).calendar()}</td>
-                  <td>{reservation._id}</td>
-                  <td>
-                    <a
-                      href={`https://www.visitnomad.com/listing/${reservation.listing}`}
-                      target="_blank"
-                    >
-                      visitnomad.com
-                    </a>
-                  </td>
-                  <td>${reservation.totalPrice}</td>
-                  <td>
-                    ${reservation.totalPrice - reservation.totalPrice * 0.03}
-                  </td>
-                  <td>
-                    $
-                    {(
-                      reservation.totalPrice -
-                      reservation.totalPrice * 0.03 -
-                      reservation.hostFee -
-                      reservation.guestFee
-                    ).toFixed(2)}
-                  </td>
-                  <td>
-                    $
-                    {(
-                      reservation.totalPrice -
-                      reservation.totalPrice * 0.03 -
-                      (reservation.totalPrice -
+              )
+                .filter(
+                  (reservation) =>
+                    reservation.active ===
+                    (filterActive === null
+                      ? reservation.active
+                      : filterActive === true
+                      ? true
+                      : false)
+                )
+                .map((reservation) => (
+                  <tr key={reservation._id}>
+                    <td>{moment(reservation.createdAt).calendar()}</td>
+                    <td>{reservation._id}</td>
+                    <td>
+                      <a
+                        href={`https://www.visitnomad.com/listing/${reservation.listing}`}
+                        target="_blank"
+                      >
+                        visitnomad.com
+                      </a>
+                    </td>
+                    <td>${reservation.totalPrice}</td>
+                    <td>
+                      ${reservation.totalPrice - reservation.totalPrice * 0.03}
+                    </td>
+                    <td>
+                      $
+                      {(
+                        reservation.totalPrice -
                         reservation.totalPrice * 0.03 -
                         reservation.hostFee -
-                        reservation.guestFee)
-                    ).toFixed(2)}
-                  </td>
-                  <td>{`${moment(reservation.days[0]).format(
-                    "MM[/]DD[/]YYYY"
-                  )} to ${moment(reservation.days[1]).format(
-                    "MM[/]DD[/]YYYY"
-                  )}`}</td>
-                  <td>{reservation.email}</td>
-                  <td>{reservation.active ? "Yes" : "No"}</td>
-                </tr>
-              ))}
+                        reservation.guestFee
+                      ).toFixed(2)}
+                    </td>
+                    <td>
+                      $
+                      {(
+                        reservation.totalPrice -
+                        reservation.totalPrice * 0.03 -
+                        (reservation.totalPrice -
+                          reservation.totalPrice * 0.03 -
+                          reservation.hostFee -
+                          reservation.guestFee)
+                      ).toFixed(2)}
+                    </td>
+                    <td>{`${moment(reservation.days[0]).format(
+                      "MM[/]DD[/]YYYY"
+                    )} to ${moment(reservation.days[1]).format(
+                      "MM[/]DD[/]YYYY"
+                    )}`}</td>
+                    <td>{reservation.email}</td>
+                    <td>{reservation.active ? "Yes" : "No"}</td>
+                  </tr>
+                ))}
           </table>
         </div>
       </div>

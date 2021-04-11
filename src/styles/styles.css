@@ -102,7 +102,7 @@ body {
 }
 
 .password-page-container button:hover {
-  background: #038b67;
+  background: #00a378;
 }
 
 .navbar-container {
@@ -171,10 +171,77 @@ body {
   overflow-x: scroll;
 }
 
-.reservations-container h1 {
+.reservations-container-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.reservations-container-header h1 {
   font-weight: 600;
   color: #00b183;
   font-size: 1.5rem;
+}
+
+.reservations-dropdown-button {
+  width: 150px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #00b183;
+  color: white;
+  position: relative;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.reservations-dropdown-button svg {
+  position: absolute;
+  right: 0;
+}
+
+.reservations-dropdown-container {
+  position: absolute;
+  width: 100%;
+  top: 32px;
+  left: 0;
+  background: #00b183;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 3px;
+}
+
+.reservation-dropdown-option {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+
+.reservation-dropdown-option:hover {
+  background: #00a378;
 }
 
 .reservations-table-container {
