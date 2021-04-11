@@ -1,15 +1,40 @@
+import React, { useState, useEffect } from "react";
+import moment from "moment";
 import axios from "axios";
-import React, { useEffect } from "react";
+
 import Navbar from "../components/Navbar";
 
 const Reservations = () => {
+  const [reservations, setReservations] = useState([]);
+
   useEffect(() => {
     const getReservations = async () => {
       const res = await axios.get("http://localhost:8080/reservation");
-      console.log(res.data);
+      const reservationsArray = res.data.reservations;
+      for (let i = 0; i < reservationsArray.length; i++) {
+        if (reservationsArray[i].user !== undefined) {
+          const res = await axios.get(
+            `http://localhost:8080/user/getUserInfo/${reservationsArray[i].user}`
+          );
+          reservationsArray[i].email = res.data.email;
+        }
+      }
+      setReservations(reservationsArray);
     };
     getReservations();
   }, []);
+
+  for (let i = 0; i < reservations; i++) {
+    const getEmail = async () => {
+      if (reservations[i].user !== undefined) {
+        const res = await axios.get(
+          `/user/getUserInfo/${reservations[i].user}`
+        );
+        console.log(res);
+      }
+    };
+    getEmail();
+  }
 
   return (
     <div className="reservations-page-screen">
@@ -26,48 +51,56 @@ const Reservations = () => {
               <th>After Stripe</th>
               <th>Host Payout</th>
               <th>Profit</th>
-              <th>Security Desposit</th>
+              <th>Reservation Dates</th>
+              <th>User</th>
+              <th>Active</th>
             </tr>
-            <tr>
-              <td>2/8/2021</td>
-              <td>6021db0dc304e32b5d80e49d</td>
-              <td>https://visitnomad.com</td>
-              <td>$627</td>
-              <td>$608.52</td>
-              <td>$494</td>
-              <td>$114.52</td>
-              <td>$250.00</td>
-            </tr>
-            <tr>
-              <td>2/8/2021</td>
-              <td>6021db0dc304e32b5d80e49d</td>
-              <td>https://visitnomad.com</td>
-              <td>$627</td>
-              <td>$608.52</td>
-              <td>$494</td>
-              <td>$114.52</td>
-              <td>$250.00</td>
-            </tr>
-            <tr>
-              <td>2/8/2021</td>
-              <td>6021db0dc304e32b5d80e49d</td>
-              <td>https://visitnomad.com</td>
-              <td>$627</td>
-              <td>$608.52</td>
-              <td>$494</td>
-              <td>$114.52</td>
-              <td>$250.00</td>
-            </tr>
-            <tr>
-              <td>2/8/2021</td>
-              <td>6021db0dc304e32b5d80e49d</td>
-              <td>https://visitnomad.com</td>
-              <td>$627</td>
-              <td>$608.52</td>
-              <td>$494</td>
-              <td>$114.52</td>
-              <td>$250.00</td>
-            </tr>
+            {reservations.length > 0 &&
+              reservations.map((reservation) => (
+                <tr key={reservation._id}>
+                  <td>{moment(reservation.createdAt).calendar()}</td>
+                  <td>{reservation._id}</td>
+                  <td>
+                    <a
+                      href={`https://www.visitnomad.com/listing/${reservation.listing}`}
+                      target="_blank"
+                    >
+                      visitnomad.com
+                    </a>
+                  </td>
+                  <td>${reservation.totalPrice}</td>
+                  <td>
+                    ${reservation.totalPrice - reservation.totalPrice * 0.03}
+                  </td>
+                  <td>
+                    $
+                    {(
+                      reservation.totalPrice -
+                      reservation.totalPrice * 0.03 -
+                      reservation.hostFee -
+                      reservation.guestFee
+                    ).toFixed(2)}
+                  </td>
+                  <td>
+                    $
+                    {(
+                      reservation.totalPrice -
+                      reservation.totalPrice * 0.03 -
+                      (reservation.totalPrice -
+                        reservation.totalPrice * 0.03 -
+                        reservation.hostFee -
+                        reservation.guestFee)
+                    ).toFixed(2)}
+                  </td>
+                  <td>{`${moment(reservation.days[0]).format(
+                    "MM[/]DD[/]YYYY"
+                  )} to ${moment(reservation.days[1]).format(
+                    "MM[/]DD[/]YYYY"
+                  )}`}</td>
+                  <td>{reservation.email}</td>
+                  <td>{reservation.active ? "Yes" : "No"}</td>
+                </tr>
+              ))}
           </table>
         </div>
       </div>

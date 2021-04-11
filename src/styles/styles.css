@@ -168,11 +168,12 @@ body {
   -webkit-box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
           box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
   padding: 15px;
+  overflow-x: scroll;
 }
 
 .reservations-container h1 {
   font-weight: 600;
-  color: #2a2a2a;
+  color: #00b183;
   font-size: 1.5rem;
 }
 
@@ -200,6 +201,10 @@ body {
 .reservations-table-container table td {
   font-weight: 400;
   font-size: 0.9rem;
+}
+
+.reservations-table-container table td a {
+  color: black;
 }
 
 .reservations-table-container table tr:nth-child(even) {
