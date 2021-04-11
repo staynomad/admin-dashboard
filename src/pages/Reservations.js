@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import axios from "axios";
+import _ from "lodash";
 
 import Navbar from "../components/Navbar";
 
@@ -24,18 +25,6 @@ const Reservations = () => {
     getReservations();
   }, []);
 
-  for (let i = 0; i < reservations; i++) {
-    const getEmail = async () => {
-      if (reservations[i].user !== undefined) {
-        const res = await axios.get(
-          `/user/getUserInfo/${reservations[i].user}`
-        );
-        console.log(res);
-      }
-    };
-    getEmail();
-  }
-
   return (
     <div className="reservations-page-screen">
       <Navbar />
@@ -56,7 +45,11 @@ const Reservations = () => {
               <th>Active</th>
             </tr>
             {reservations.length > 0 &&
-              reservations.map((reservation) => (
+              _.orderBy(
+                reservations,
+                [(reservation) => new Date(reservation.createdAt)],
+                ["desc"]
+              ).map((reservation) => (
                 <tr key={reservation._id}>
                   <td>{moment(reservation.createdAt).calendar()}</td>
                   <td>{reservation._id}</td>
