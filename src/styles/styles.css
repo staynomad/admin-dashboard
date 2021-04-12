@@ -140,11 +140,24 @@ body {
   height: 45px;
 }
 
+@media screen and (max-width: 450px) {
+  .navbar-container img {
+    height: 30px;
+  }
+}
+
 .navbar-links a {
   cursor: pointer;
   text-decoration: none;
   color: #00b183;
   margin-left: 35px;
+}
+
+@media screen and (max-width: 375px) {
+  .navbar-links a {
+    font-size: 0.9rem;
+    margin-left: 20px;
+  }
 }
 
 .dashboard-screen {

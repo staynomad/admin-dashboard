@@ -9,6 +9,9 @@
 
   img {
     height: 45px;
+    @media screen and (max-width: 450px) {
+      height: 30px;
+    }
   }
 }
 
@@ -18,5 +21,9 @@
     text-decoration: none;
     color: $green;
     margin-left: 35px;
+    @media screen and (max-width: 375px) {
+      font-size: 0.9rem;
+      margin-left: 20px;
+    }
   }
 }
