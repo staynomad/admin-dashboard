@@ -13,19 +13,25 @@
   border-radius: 15px;
   box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
   padding: 15px;
-  overflow-x: scroll;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  @media screen and (max-width: 1540px) {
+    width: 98%;
+  }
 }
 
 .reservations-container-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   h1 {
     font-weight: 600;
     color: $green;
     font-size: 1.5rem;
+    @media screen and (max-width: 450px) {
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -57,6 +63,7 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 3px;
+  z-index: 2;
 }
 
 .reservation-dropdown-option {
@@ -73,11 +80,14 @@
 .reservations-table-container {
   height: auto;
   width: 100%;
-  margin-top: 1rem;
+  overflow-x: auto;
   flex: 1;
+  position: relative;
   table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 1250px;
+    margin-bottom: 4rem;
     td,
     th {
       text-align: left;
@@ -109,5 +119,6 @@
 .reservations-pagination-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 1.5rem;
+  margin-top: 10px;
+  width: 100%;
 }

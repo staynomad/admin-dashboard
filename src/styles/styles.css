@@ -182,7 +182,6 @@ body {
   -webkit-box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
           box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
   padding: 15px;
-  overflow-x: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -195,6 +194,12 @@ body {
           justify-content: flex-start;
 }
 
+@media screen and (max-width: 1540px) {
+  .reservations-container {
+    width: 98%;
+  }
+}
+
 .reservations-container-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -202,12 +207,21 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .reservations-container-header h1 {
   font-weight: 600;
   color: #00b183;
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 450px) {
+  .reservations-container-header h1 {
+    font-size: 1.2rem;
+  }
 }
 
 .reservations-dropdown-button {
@@ -254,6 +268,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-radius: 3px;
+  z-index: 2;
 }
 
 .reservation-dropdown-option {
@@ -271,15 +286,18 @@ body {
 .reservations-table-container {
   height: auto;
   width: 100%;
-  margin-top: 1rem;
+  overflow-x: auto;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  position: relative;
 }
 
 .reservations-table-container table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 1250px;
+  margin-bottom: 4rem;
 }
 
 .reservations-table-container table td,
@@ -317,6 +335,7 @@ body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  margin-top: 1.5rem;
+  margin-top: 10px;
+  width: 100%;
 }
 /*# sourceMappingURL=styles.css.map */
