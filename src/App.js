@@ -29,7 +29,6 @@ const useToken = () => {
 function App() {
   const { token, setToken } = useToken();
 
-  // if (token) {
   if (!token) {
     return <AdminPassword setToken={setToken} />;
   }

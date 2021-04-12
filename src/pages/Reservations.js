@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import axios from "axios";
+import { app } from "../utils/axiosConfig";
+
 import _ from "lodash";
 
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -20,12 +21,12 @@ const Reservations = () => {
 
   useEffect(() => {
     const getReservations = async () => {
-      const res = await axios.get("http://localhost:8080/reservation");
+      const res = await app.get("/reservation");
       const reservationsArray = res.data.reservations;
       for (let i = 0; i < reservationsArray.length; i++) {
         if (reservationsArray[i].user !== undefined) {
-          const res = await axios.get(
-            `http://localhost:8080/user/getUserInfo/${reservationsArray[i].user}`
+          const res = await app.get(
+            `/user/getUserInfo/${reservationsArray[i].user}`
           );
           reservationsArray[i].email = res.data.email;
         }

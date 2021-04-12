@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { app } from "../utils/axiosConfig";
 
 import logo from "../assets/nomad.svg";
 
@@ -8,7 +9,7 @@ const AdminPassword = ({ setToken }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const loginReq = await axios.post("http://localhost:8080/adminVerify", {
+    const loginReq = await app.post("/adminVerify", {
       password: password,
     });
     if (loginReq && loginReq.status === 200) {
