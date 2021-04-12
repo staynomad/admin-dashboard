@@ -16,7 +16,7 @@ const Reservations = () => {
 
   const [paginatedReservations, setPaginatedReservations] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [reservationsPerPage] = useState(5);
+  const [reservationsPerPage] = useState(20);
 
   useEffect(() => {
     const getReservations = async () => {
