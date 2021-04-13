@@ -1,0 +1,354 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: whitesmoke;
+}
+
+.MuiPaginationItem-root {
+  color: black !important;
+  outline: none !important;
+}
+
+.MuiPaginationItem-page:hover {
+  background-color: #d3d3d3 !important;
+}
+
+.MuiPaginationItem-page.Mui-selected {
+  background-color: #00b183 !important;
+  color: white !important;
+}
+
+.password-page-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.password-page-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5rem;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 20px rgba(167, 167, 167, 0.411);
+          box-shadow: 3px 3px 20px rgba(167, 167, 167, 0.411);
+  background: white;
+}
+
+.password-page-container img {
+  width: 250px;
+}
+
+.password-page-container h1 {
+  margin-top: 15px;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.password-page-container input {
+  background: transparent;
+  border: none;
+  border: 2px solid #d3d3d3 !important;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 10px 0;
+}
+
+.password-page-container input:focus {
+  border: 2px solid #00b183;
+}
+
+.password-page-container input:required {
+  border-color: #d3d3d3;
+}
+
+.password-page-container input::-webkit-input-placeholder {
+  color: #8b8b8b;
+}
+
+.password-page-container input:-ms-input-placeholder {
+  color: #8b8b8b;
+}
+
+.password-page-container input::-ms-input-placeholder {
+  color: #8b8b8b;
+}
+
+.password-page-container input::placeholder {
+  color: #8b8b8b;
+}
+
+.password-page-container button {
+  border: none;
+  background: #00b183;
+  color: white;
+  font-size: 1.5rem;
+  padding: 4px 18px;
+  border-radius: 8px;
+  margin: 10px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.password-page-container button:hover {
+  background: #00a378;
+}
+
+.navbar-container {
+  background: white;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20px;
+  -webkit-box-shadow: 5px 5px 20px rgba(202, 202, 202, 0.411);
+          box-shadow: 5px 5px 20px rgba(202, 202, 202, 0.411);
+}
+
+.navbar-container img {
+  height: 45px;
+}
+
+@media screen and (max-width: 450px) {
+  .navbar-container img {
+    height: 30px;
+  }
+}
+
+.navbar-links a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #00b183;
+  margin-left: 35px;
+}
+
+@media screen and (max-width: 375px) {
+  .navbar-links a {
+    font-size: 0.9rem;
+    margin-left: 20px;
+  }
+}
+
+.dashboard-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.reservations-page-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.reservations-container {
+  margin: 2rem auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 90%;
+  background: white;
+  border-radius: 15px;
+  -webkit-box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
+          box-shadow: 5px 5px 20px rgba(167, 167, 167, 0.411);
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+@media screen and (max-width: 1540px) {
+  .reservations-container {
+    width: 98%;
+  }
+}
+
+.reservations-container-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.reservations-container-header h1 {
+  font-weight: 600;
+  color: #00b183;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 450px) {
+  .reservations-container-header h1 {
+    font-size: 1.2rem;
+  }
+}
+
+.reservations-dropdown-button {
+  width: 150px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #00b183;
+  color: white;
+  position: relative;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.reservations-dropdown-button svg {
+  position: absolute;
+  right: 0;
+}
+
+.reservations-dropdown-container {
+  position: absolute;
+  width: 100%;
+  top: 32px;
+  left: 0;
+  background: #00b183;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.reservation-dropdown-option {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+
+.reservation-dropdown-option:hover {
+  background: #00a378;
+}
+
+.reservations-table-container {
+  height: auto;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+}
+
+.reservations-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1250px;
+  margin-bottom: 4rem;
+}
+
+.reservations-table-container table td,
+.reservations-table-container table th {
+  text-align: left;
+  padding: 5px;
+}
+
+.reservations-table-container table th {
+  font-weight: 500;
+}
+
+.reservations-table-container table td {
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.reservations-table-container table td a {
+  color: black;
+}
+
+.reservations-table-container table tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+.reservations-table-header td,
+.reservations-table-header th {
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.reservations-pagination-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 10px;
+  width: 100%;
+}
+/*# sourceMappingURL=styles.css.map */

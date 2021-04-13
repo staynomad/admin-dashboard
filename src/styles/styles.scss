@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+$green: #00b183;
+$darkgreen: #00a378;
+$gray: #d3d3d3;
+$black: rgb(42, 42, 42);
+
+body {
+  background: rgb(245, 245, 245);
+}
+
+.MuiPaginationItem-root {
+  color: black !important;
+  outline: none !important;
+}
+
+.MuiPaginationItem-page:hover {
+  background-color: $gray !important;
+}
+
+.MuiPaginationItem-page.Mui-selected {
+  background-color: $green !important;
+  color: white !important;
+}
+
+@import "password";
+@import "navbar";
+@import "dashboard";
+@import "reservations";

@@ -1,0 +1,29 @@
+.navbar-container {
+  background: white;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 5px 5px 20px rgba(202, 202, 202, 0.411);
+
+  img {
+    height: 45px;
+    @media screen and (max-width: 450px) {
+      height: 30px;
+    }
+  }
+}
+
+.navbar-links {
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: $green;
+    margin-left: 35px;
+    @media screen and (max-width: 375px) {
+      font-size: 0.9rem;
+      margin-left: 20px;
+    }
+  }
+}
