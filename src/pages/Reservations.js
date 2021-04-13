@@ -60,7 +60,7 @@ const Reservations = () => {
         )
         .slice(indexOfFirstRes, indexOfLastRes)
     );
-  }, [reservations, filterActive, currentPage]);
+  }, [reservations, filterActive, currentPage, reservationsPerPage]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -148,6 +148,7 @@ const Reservations = () => {
                     <a
                       href={`https://www.visitnomad.com/listing/${reservation.listing}`}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       visitnomad.com
                     </a>
