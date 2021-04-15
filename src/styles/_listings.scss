@@ -1,11 +1,11 @@
-.reservations-page-screen {
+.listings-page-screen {
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.reservations-container {
+.listings-container {
   margin: 2rem auto;
   flex: 1;
   width: 90%;
@@ -21,7 +21,7 @@
   }
 }
 
-.reservations-container-header {
+.listings-container-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +35,7 @@
   }
 }
 
-.reservations-dropdown-button {
+.listings-dropdown-button {
   width: 150px;
   height: 30px;
   display: flex;
@@ -52,7 +52,7 @@
   }
 }
 
-.reservations-dropdown-container {
+.listings-dropdown-container {
   position: absolute;
   width: 100%;
   top: 32px;
@@ -66,7 +66,7 @@
   z-index: 2;
 }
 
-.reservation-dropdown-option {
+.listings-dropdown-option {
   width: 100%;
   padding: 5px;
   text-align: center;
@@ -75,50 +75,4 @@
   &:hover {
     background: $darkgreen;
   }
-}
-
-.reservations-table-container {
-  height: auto;
-  width: 100%;
-  overflow-x: auto;
-  flex: 1;
-  position: relative;
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 1250px;
-    margin-bottom: 4rem;
-    td,
-    th {
-      text-align: left;
-      padding: 5px;
-    }
-    th {
-      font-weight: 500;
-    }
-    td {
-      font-weight: 400;
-      font-size: 0.9rem;
-      a {
-        color: black;
-      }
-    }
-    tr:nth-child(even) {
-      background-color: rgb(240, 240, 240);
-    }
-  }
-}
-
-.reservations-table-header {
-  td,
-  th {
-    border-bottom: 1px solid $black;
-  }
-}
-
-.reservations-pagination-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
-  width: 100%;
 }
