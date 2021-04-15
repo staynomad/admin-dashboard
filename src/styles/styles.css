@@ -250,6 +250,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 1rem;
 }
 
 .reservations-container-header h1 {
@@ -430,6 +431,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 1rem;
 }
 
 .listings-container-header h1 {
@@ -501,5 +503,61 @@ body {
 
 .listings-dropdown-option:hover {
   background: #00a378;
+}
+
+.listings-table-container {
+  height: auto;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  position: relative;
+}
+
+.listings-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+  margin-bottom: 4rem;
+}
+
+.listings-table-container table td,
+.listings-table-container table th {
+  text-align: left;
+  padding: 5px;
+}
+
+.listings-table-container table th {
+  font-weight: 500;
+}
+
+.listings-table-container table td {
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.listings-table-container table td a {
+  color: black;
+}
+
+.listings-table-container table tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+.listings-table-header td,
+.listings-table-header th {
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.listings-pagination-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 10px;
+  width: 100%;
 }
 /*# sourceMappingURL=styles.css.map */

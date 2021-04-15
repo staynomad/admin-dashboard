@@ -25,6 +25,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
   h1 {
     font-weight: 600;
     color: $green;
@@ -75,4 +76,50 @@
   &:hover {
     background: $darkgreen;
   }
+}
+
+.listings-table-container {
+  height: auto;
+  width: 100%;
+  overflow-x: auto;
+  flex: 1;
+  position: relative;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+    margin-bottom: 4rem;
+    td,
+    th {
+      text-align: left;
+      padding: 5px;
+    }
+    th {
+      font-weight: 500;
+    }
+    td {
+      font-weight: 400;
+      font-size: 0.9rem;
+      a {
+        color: black;
+      }
+    }
+    tr:nth-child(even) {
+      background-color: rgb(240, 240, 240);
+    }
+  }
+}
+
+.listings-table-header {
+  td,
+  th {
+    border-bottom: 1px solid $black;
+  }
+}
+
+.listings-pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  width: 100%;
 }

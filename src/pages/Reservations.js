@@ -36,10 +36,6 @@ const Reservations = () => {
     getReservations();
   }, []);
 
-  const paginate = (number) => {
-    setCurrentPage(number);
-  };
-
   useEffect(() => {
     const indexOfLastRes = currentPage * reservationsPerPage;
     const indexOfFirstRes = indexOfLastRes - reservationsPerPage;
@@ -65,6 +61,10 @@ const Reservations = () => {
   useEffect(() => {
     setCurrentPage(1);
   }, [filterActive]);
+
+  const paginate = (number) => {
+    setCurrentPage(number);
+  };
 
   return (
     <div className="reservations-page-screen">
@@ -142,7 +142,9 @@ const Reservations = () => {
                 ["desc"]
               ).map((reservation) => (
                 <tr key={reservation._id}>
-                  <td>{moment(reservation.createdAt).calendar()}</td>
+                  <td>
+                    {moment(reservation.createdAt).format("MM[/]DD[/]YYYY")}
+                  </td>
                   <td>{reservation._id}</td>
                   <td>
                     <a
