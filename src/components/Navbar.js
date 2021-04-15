@@ -9,6 +9,7 @@ const Navbar = () => {
       <img src={logo} alt="" />
       <div className="navbar-links">
         <Link to="/">Dashboard</Link>
+        <Link to="/listings">Listings</Link>
         <Link to="/reservations">Reservations</Link>
       </div>
     </div>
