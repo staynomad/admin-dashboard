@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { app } from "../utils/axiosConfig";
-import moment from "moment";
 
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
