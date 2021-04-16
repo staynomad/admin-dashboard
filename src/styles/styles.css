@@ -518,7 +518,7 @@ body {
 .listings-table-container table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 1000px;
+  min-width: 700px;
   margin-bottom: 4rem;
 }
 

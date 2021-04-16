@@ -41,8 +41,6 @@ const Listings = () => {
   useEffect(() => {
     const indexOfLastListing = currentPage * listingsPerPage;
     const indexOfFirstListing = indexOfLastListing - listingsPerPage;
-    console.log(indexOfFirstListing);
-    console.log(indexOfLastListing);
     setPaginatedListings(
       _.orderBy(listings, [(listing) => new Date(listing.createdAt)], ["desc"])
         .filter(
@@ -61,8 +59,6 @@ const Listings = () => {
   const paginate = (number) => {
     setCurrentPage(number);
   };
-
-  console.log(paginatedListings);
 
   return (
     <div className="listings-page-screen">
@@ -122,7 +118,7 @@ const Listings = () => {
         <div className="listings-table-container">
           <table>
             <tr className="reservations-table-header">
-              <th>Created</th>
+              {/* <th>Created</th> */}
               <th>Link</th>
               <th>Price</th>
               <th>Host Email</th>
@@ -135,7 +131,11 @@ const Listings = () => {
                 ["desc"]
               ).map((listing) => (
                 <tr key={listing._id}>
-                  <td>{moment(listing.createdAt).format("MM[/]DD[/]YYYY")}</td>
+                  {/* <td>
+                    {moment(listing.createdAt).format(
+                      "MM[/]DD[/]YYYY"
+                    )}
+                  </td> */}
                   <td>
                     <a
                       href={`https://www.visitnomad.com/listing/${listing._id}`}
