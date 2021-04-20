@@ -6,7 +6,9 @@ import logo from "../assets/nomad.svg";
 const Navbar = () => {
   return (
     <div className="navbar-container">
-      <img src={logo} alt="" />
+      <Link to="/">
+        <img src={logo} alt="nomad" />
+      </Link>
       <div className="navbar-links">
         <Link to="/">Dashboard</Link>
         <Link to="/listings">Listings</Link>
