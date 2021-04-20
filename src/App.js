@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import AdminPassword from "./pages/AdminPassword";
 import Dashboard from "./pages/Dashboard";
 import Reservations from "./pages/Reservations";
+import Listings from "./pages/Listings";
 
 import "./styles/styles.css";
 
@@ -39,6 +40,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Dashboard} />
           <Route path="/reservations" exact component={Reservations} />
+          <Route path="/listings" exact component={Listings} />
         </Switch>
       </BrowserRouter>
     </div>
