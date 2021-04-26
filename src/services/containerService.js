@@ -13,6 +13,9 @@ export default {
   getContainer: async (title) => {
     return await app.get(`/container/byTitle/${title}`);
   },
+  getAllContainers: async () => {
+    return await app.get(`/container/allContainers`);
+  },
   addListing: async (title, listingId) => {
     return await app.post(`/container/addListing`, {
       title,

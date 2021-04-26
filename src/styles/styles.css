@@ -372,6 +372,22 @@ body {
   border-radius: 5px;
 }
 
+.create-container-title-container input::-webkit-input-placeholder {
+  color: #8b8b8b;
+}
+
+.create-container-title-container input:-ms-input-placeholder {
+  color: #8b8b8b;
+}
+
+.create-container-title-container input::-ms-input-placeholder {
+  color: #8b8b8b;
+}
+
+.create-container-title-container input::placeholder {
+  color: #8b8b8b;
+}
+
 .create-container-addlisting-container {
   width: 100%;
   display: -webkit-box;
@@ -404,6 +420,22 @@ body {
   color: #2a2a2a;
   border-radius: 5px;
   width: 100%;
+}
+
+.create-container-addlisting-container input::-webkit-input-placeholder {
+  color: #8b8b8b;
+}
+
+.create-container-addlisting-container input:-ms-input-placeholder {
+  color: #8b8b8b;
+}
+
+.create-container-addlisting-container input::-ms-input-placeholder {
+  color: #8b8b8b;
+}
+
+.create-container-addlisting-container input::placeholder {
+  color: #8b8b8b;
 }
 
 .create-container-addlisting-container svg {
@@ -485,6 +517,7 @@ body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: relative;
 }
 
 .create-container-btn-container button {
@@ -502,6 +535,17 @@ body {
 .create-container-btn-container button:hover {
   background: #00b183;
   color: white;
+}
+
+.create-container-btn-container h2 {
+  position: absolute;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  color: #e03f00;
+  font-size: 20px;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
 .reservations-page-screen {

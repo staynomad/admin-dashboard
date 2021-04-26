@@ -8,8 +8,17 @@ import CreateContainerModal from "../components/CreateContainerModal";
 import containerService from "../services/containerService";
 
 const Dashboard = () => {
-  const [containers, setContainers] = useState([1, 2, 3, 4]);
+  const [containers, setContainers] = useState([]);
   const [createModal, setCreateModal] = useState(false);
+
+  useEffect(() => {
+    const getData = async () => {
+      const resp = await containerService.getAllContainers();
+      console.log(resp.data.containers);
+      setContainers(resp.data.containers);
+    };
+    getData();
+  }, []);
 
   return (
     <div className="dashboard-screen">
@@ -24,7 +33,7 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-content">
           {containers.map((container) => (
-            <div className="container"></div>
+            <div key={Math.random()} className="container"></div>
           ))}
         </div>
       </div>
