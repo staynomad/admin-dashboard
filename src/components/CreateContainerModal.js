@@ -48,6 +48,7 @@ const CreateContainerModal = (props) => {
 
     const resp = await containerService.createContainer(titleInput, listings);
     console.log(resp);
+    props.setContainers([resp.data.container, ...props.containers]);
   };
 
   return (

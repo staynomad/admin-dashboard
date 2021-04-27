@@ -25,7 +25,11 @@ const Dashboard = () => {
       <Navbar />
       <div className="dashboard-container">
         <Modal open={createModal} onClose={() => setCreateModal(false)}>
-          <CreateContainerModal closeModal={() => setCreateModal(false)} />
+          <CreateContainerModal
+            closeModal={() => setCreateModal(false)}
+            containers={containers}
+            setContainers={setContainers}
+          />
         </Modal>
         <div className="dashboard-container-header">
           <h1>Dashboard</h1>
