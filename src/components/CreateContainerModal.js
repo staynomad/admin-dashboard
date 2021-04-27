@@ -46,9 +46,14 @@ const CreateContainerModal = (props) => {
       return;
     }
 
-    const resp = await containerService.createContainer(titleInput, listings);
-    console.log(resp);
-    props.setContainers([resp.data.container, ...props.containers]);
+    try {
+      const resp = await containerService.createContainer(titleInput, listings);
+      props.setContainers([resp.data.container, ...props.containers]);
+      props.closeModal();
+    } catch (e) {
+      setError(true);
+      setErrorMessage("A container with this title already exists");
+    }
   };
 
   return (

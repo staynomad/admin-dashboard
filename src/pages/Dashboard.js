@@ -37,7 +37,9 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-content">
           {containers.map((container) => (
-            <div key={Math.random()} className="container"></div>
+            <div key={Math.random()} className="container">
+              <h2>{container.title}</h2>
+            </div>
           ))}
         </div>
       </div>
