@@ -94,7 +94,12 @@ const CreateContainerModal = (props) => {
         <div className="create-container-listings-container">
           {listings.map((listing) => (
             <div className="create-container-listing" key={listing}>
-              <a href="/">{listing}</a>
+              <a
+                href={`https://www.visitnomad.com/listing/${listing}`}
+                target="_blank"
+              >
+                {listing}
+              </a>
               <RemoveIcon onClick={() => handleRemoveListing(listing)} />
             </div>
           ))}

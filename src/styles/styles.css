@@ -283,6 +283,121 @@ body {
   margin: 0 2rem 1rem 0;
 }
 
+.container-header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px;
+}
+
+.container-header h2 {
+  color: #2a2a2a;
+  font-weight: 500;
+}
+
+.container-header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.delete-container-icon {
+  font-size: 2.3rem !important;
+  color: #2a2a2a;
+  cursor: pointer;
+}
+
+.delete-container-icon:hover {
+  opacity: 0.7;
+}
+
+.add-listing-container-icon {
+  font-size: 2.5rem !important;
+  color: #00b183;
+  cursor: pointer;
+}
+
+.add-listing-container-icon:hover {
+  color: #00a378;
+}
+
+.confirm-delete-container-modal {
+  width: 550px;
+  height: 200px;
+  border-radius: 12px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
+}
+
+.confirm-delete-container-modal h2 {
+  font-weight: 500;
+  text-align: center;
+}
+
+.confirm-delete-container-modal div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 0;
+}
+
+.cancel-delete-container-button,
+.confirm-delete-container-button {
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 1rem;
+}
+
+.cancel-delete-container-button {
+  background: #d3d3d3;
+  color: #2a2a2a;
+}
+
+.cancel-delete-container-button:hover {
+  opacity: 0.7;
+}
+
+.confirm-delete-container-button {
+  background: #00b183;
+  color: white;
+}
+
+.confirm-delete-container-button:hover {
+  background: #00a378;
+}
+
 .create-container-screen {
   width: 100%;
   height: 100vh;

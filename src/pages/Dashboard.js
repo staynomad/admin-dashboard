@@ -5,6 +5,7 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 import Navbar from "../components/Navbar";
 import CreateContainerModal from "../components/CreateContainerModal";
+import Container from "../components/Container";
 import containerService from "../services/containerService";
 
 const Dashboard = () => {
@@ -14,8 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     const getData = async () => {
       const resp = await containerService.getAllContainers();
-      console.log(resp.data.containers);
-      setContainers(resp.data.containers);
+      setContainers(resp.data.containers.reverse());
     };
     getData();
   }, []);
@@ -31,15 +31,19 @@ const Dashboard = () => {
             setContainers={setContainers}
           />
         </Modal>
+
         <div className="dashboard-container-header">
           <h1>Dashboard</h1>
           <AddCircleIcon onClick={() => setCreateModal(true)} />
         </div>
         <div className="dashboard-content">
           {containers.map((container) => (
-            <div key={Math.random()} className="container">
-              <h2>{container.title}</h2>
-            </div>
+            <Container
+              key={Math.random()}
+              title={container.title}
+              containers={containers}
+              setContainers={setContainers}
+            />
           ))}
         </div>
       </div>

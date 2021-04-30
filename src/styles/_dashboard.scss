@@ -59,6 +59,90 @@
   margin: 0 2rem 1rem 0;
 }
 
+.container-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  h2 {
+    color: $black;
+    font-weight: 500;
+  }
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.delete-container-icon {
+  font-size: 2.3rem !important;
+  color: $black;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.add-listing-container-icon {
+  font-size: 2.5rem !important;
+  color: $green;
+  cursor: pointer;
+  &:hover {
+    color: $darkgreen;
+  }
+}
+
+.confirm-delete-container-modal {
+  width: 550px;
+  height: 200px;
+  border-radius: 12px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  h2 {
+    font-weight: 500;
+    text-align: center;
+  }
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+  }
+}
+
+.cancel-delete-container-button,
+.confirm-delete-container-button {
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 1rem;
+}
+
+.cancel-delete-container-button {
+  background: $gray;
+  color: $black;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.confirm-delete-container-button {
+  background: $green;
+  color: white;
+  &:hover {
+    background: $darkgreen;
+  }
+}
+
 .create-container-screen {
   width: 100%;
   height: 100vh;
