@@ -8,7 +8,9 @@ export default {
     });
   },
   deleteContainer: async (title) => {
-    return await app.delete(`/container/byTitle/${title}`);
+    return await app.delete(`/container/byTitle`, {
+      title,
+    });
   },
   getContainer: async (title) => {
     return await app.get(`/container/byTitle/${title}`);
