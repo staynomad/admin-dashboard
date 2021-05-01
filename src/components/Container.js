@@ -10,9 +10,7 @@ const Container = ({ title, containers, setContainers }) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   const handleDeleteContainer = async () => {
-    console.log("test");
     const resp = await containerService.deleteContainer(title);
-    console.log(resp);
     setContainers(containers.filter((container) => container.title !== title));
     setConfirmDelete(false);
   };

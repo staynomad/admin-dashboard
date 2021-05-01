@@ -9,7 +9,7 @@ export default {
   },
   deleteContainer: async (title) => {
     return await app.delete(`/container/byTitle`, {
-      title,
+      data: { title },
     });
   },
   getContainer: async (title) => {
