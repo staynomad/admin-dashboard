@@ -26,8 +26,10 @@ export default {
   },
   deleteListing: async (title, listingId) => {
     return await app.delete(`/container/deleteListing`, {
-      title,
-      listingId,
+      data: {
+        title,
+        listingId,
+      },
     });
   },
 };
