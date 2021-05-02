@@ -30,7 +30,9 @@ const CreateContainerModal = (props) => {
   };
 
   const handleKeyDown = (e) => {
-    e.key === "Enter" && handleAddListing();
+    e.key === "Enter" &&
+      listingInput.replace(/\s/g, "").length &&
+      handleAddListing();
   };
 
   const handleCreateContainer = async () => {

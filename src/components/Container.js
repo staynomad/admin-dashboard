@@ -22,8 +22,12 @@ const Container = ({ title, containers, setContainers, initialListings }) => {
   };
 
   const handleRemoveListing = async (listing) => {
-    await containerService.deleteListing(title, listing);
-    setListings(listings.filter((l) => l !== listing));
+    if (listings.filter((l) => l !== listing).length === 0) {
+      setConfirmDelete(true);
+    } else {
+      await containerService.deleteListing(title, listing);
+      setListings(listings.filter((l) => l !== listing));
+    }
   };
 
   const handleAddListingMode = () => {
@@ -31,9 +35,7 @@ const Container = ({ title, containers, setContainers, initialListings }) => {
     setTimeout(() => listingInput.current && listingInput.current.focus(), 50);
   };
 
-  const handleAddListing = async () => {
-    console.log("test");
-  };
+  const handleAddListing = async () => {};
 
   return (
     <div key={Math.random()} className="container">
