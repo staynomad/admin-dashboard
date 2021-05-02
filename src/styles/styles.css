@@ -718,6 +718,53 @@ body {
   color: #d3d3d3;
 }
 
+.container-add-listing-input-container {
+  position: relative;
+}
+
+.container-add-listing-input-container svg {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  -webkit-transform: translateY(calc(-50% - 0.5rem));
+          transform: translateY(calc(-50% - 0.5rem));
+  font-size: 2rem;
+  color: #00b183;
+  cursor: pointer;
+}
+
+.container-add-listing-input-container svg:hover {
+  color: #00a378;
+}
+
+.container-add-listing-input {
+  width: 100%;
+  margin-bottom: 1rem;
+  background: #f0f0f0;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  padding: 10px;
+  color: #2a2a2a;
+  border-radius: 5px;
+}
+
+.container-add-listing-input::-webkit-input-placeholder {
+  color: #8b8b8b;
+}
+
+.container-add-listing-input:-ms-input-placeholder {
+  color: #8b8b8b;
+}
+
+.container-add-listing-input::-ms-input-placeholder {
+  color: #8b8b8b;
+}
+
+.container-add-listing-input::placeholder {
+  color: #8b8b8b;
+}
+
 .reservations-page-screen {
   width: 100%;
   min-height: 100vh;
