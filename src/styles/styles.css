@@ -737,6 +737,11 @@ body {
   color: #00a378;
 }
 
+.container-add-listing-input-container svg.inactive {
+  color: #d3d3d3;
+  pointer-events: none;
+}
+
 .container-add-listing-input {
   width: 100%;
   margin-bottom: 1rem;
@@ -763,6 +768,13 @@ body {
 
 .container-add-listing-input::placeholder {
   color: #8b8b8b;
+}
+
+.container-error-message {
+  color: #e03f00;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0 10px;
 }
 
 .reservations-page-screen {

@@ -7,13 +7,27 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 import containerService from "../services/containerService";
+import { ClickAwayListener } from "@material-ui/core";
 
 const Container = ({ title, containers, setContainers, initialListings }) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [listings, setListings] = useState(initialListings);
   const [addListingMode, setAddListingMode] = useState(false);
+  const [listingInputValue, setListingInputValue] = useState("");
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const listingInput = useRef(null);
+
+  const handleKeyDown = (e) => {
+    e.key === "Enter" &&
+      listingInputValue.replace(/\s/g, "").length &&
+      handleAddListing();
+    if (e.key === "Escape") {
+      setAddListingMode(false);
+      setListingInputValue("");
+    }
+  };
 
   const handleDeleteContainer = async () => {
     await containerService.deleteContainer(title);
@@ -31,14 +45,31 @@ const Container = ({ title, containers, setContainers, initialListings }) => {
   };
 
   const handleAddListingMode = () => {
+    setError(false);
     setAddListingMode(!addListingMode);
     setTimeout(() => listingInput.current && listingInput.current.focus(), 50);
   };
 
-  const handleAddListing = async () => {};
+  const handleAddListing = async () => {
+    setError(false);
+    if (listingInputValue.replace(/\s/g, "").length === 0) return;
+
+    if (listings.some((listing) => listing === listingInputValue)) {
+      setError(true);
+      setErrorMessage("Listing already exists in this container");
+      setListingInputValue("");
+      setAddListingMode(false);
+      return;
+    }
+    const resp = await containerService.addListing(title, listingInputValue);
+    console.log(resp);
+    setListings([listingInputValue, ...listings]);
+    setListingInputValue("");
+    setAddListingMode(false);
+  };
 
   return (
-    <div key={Math.random()} className="container">
+    <div className="container">
       <Modal open={confirmDelete} onClose={() => setConfirmDelete(false)}>
         <div className="confirm-delete-container-modal">
           <h2>Are you sure you want to delete {title}?</h2>
@@ -73,17 +104,26 @@ const Container = ({ title, containers, setContainers, initialListings }) => {
           />
         </div>
       </div>
+      {error && <h2 className="container-error-message">{errorMessage}</h2>}
       <div className="container-listings-container">
         {addListingMode && (
-          <div className="container-add-listing-input-container">
-            <input
-              type="text"
-              className="container-add-listing-input"
-              ref={listingInput}
-              placeholder="Listing ID"
-            />
-            <AddCircleIcon onClick={handleAddListing} />
-          </div>
+          <ClickAwayListener onClickAway={() => setAddListingMode(false)}>
+            <div className="container-add-listing-input-container">
+              <input
+                type="text"
+                className="container-add-listing-input"
+                ref={listingInput}
+                onChange={(e) => setListingInputValue(e.target.value)}
+                value={listingInputValue}
+                placeholder="Listing ID"
+                onKeyDown={(e) => handleKeyDown(e)}
+              />
+              <AddCircleIcon
+                onClick={handleAddListing}
+                className={!listingInputValue.length > 0 ? "inactive" : ""}
+              />
+            </div>
+          </ClickAwayListener>
         )}
         {listings.map((listing) => (
           <div className="container-listing" key={listing}>
