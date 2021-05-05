@@ -111,7 +111,12 @@ const Container = ({ title, containers, setContainers, initialListings }) => {
       {error && <h2 className="container-error-message">{errorMessage}</h2>}
       <div className="container-listings-container">
         {addListingMode && (
-          <ClickAwayListener onClickAway={() => setAddListingMode(false)}>
+          <ClickAwayListener
+            onClickAway={() => {
+              setAddListingMode(false);
+              setListingInputValue("");
+            }}
+          >
             <div className="container-add-listing-input-container">
               <input
                 type="text"
