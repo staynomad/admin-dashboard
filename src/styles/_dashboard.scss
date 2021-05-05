@@ -65,7 +65,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 5px;
+  padding: 5px 10px;
   h2 {
     color: $black;
     font-weight: 500;
@@ -319,7 +319,8 @@
     color: $danger;
     font-size: 20px;
     font-weight: 400;
-    white-space: nowrap;
+    text-align: center;
+    // white-space: nowrap;
   }
 }
 
@@ -396,7 +397,7 @@
 
 .container-error-message {
   color: $danger;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   padding: 0 10px;
 }

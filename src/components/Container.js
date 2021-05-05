@@ -61,9 +61,13 @@ const Container = ({ title, containers, setContainers, initialListings }) => {
       setAddListingMode(false);
       return;
     }
-    const resp = await containerService.addListing(title, listingInputValue);
-    console.log(resp);
-    setListings([listingInputValue, ...listings]);
+    try {
+      await containerService.addListing(title, listingInputValue);
+      setListings([listingInputValue, ...listings]);
+    } catch (e) {
+      setError(true);
+      setErrorMessage(e.response.data.error);
+    }
     setListingInputValue("");
     setAddListingMode(false);
   };

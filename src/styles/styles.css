@@ -298,7 +298,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 5px;
+  padding: 5px 10px;
 }
 
 .container-header h2 {
@@ -667,7 +667,7 @@ body {
   color: #e03f00;
   font-size: 20px;
   font-weight: 400;
-  white-space: nowrap;
+  text-align: center;
 }
 
 .container-listings-container {
@@ -772,7 +772,7 @@ body {
 
 .container-error-message {
   color: #e03f00;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   padding: 0 10px;
 }

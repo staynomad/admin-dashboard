@@ -54,7 +54,7 @@ const CreateContainerModal = (props) => {
       props.closeModal();
     } catch (e) {
       setError(true);
-      setErrorMessage("A container with this title already exists");
+      setErrorMessage(e.response.data.error);
     }
   };
 
