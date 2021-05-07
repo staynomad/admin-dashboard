@@ -138,6 +138,7 @@ const Container = ({ title, containers, setContainers, initialListings }) => {
           <div className="container-listing" key={listing}>
             <a
               href={`https://www.visitnomad.com/listing/${listing}`}
+              rel="noreferrer"
               target="_blank"
             >
               {listing}

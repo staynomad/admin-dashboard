@@ -1,6 +1,6 @@
 import { app } from "../utils/axiosConfig";
 
-export default {
+const containerService = {
   createContainer: async (title, listings) => {
     return await app.post("/container/", {
       title,
@@ -33,3 +33,5 @@ export default {
     });
   },
 };
+
+export default containerService;
