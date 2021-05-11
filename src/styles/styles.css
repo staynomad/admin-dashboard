@@ -66,6 +66,12 @@ body {
   font-size: 1.5rem;
 }
 
+.password-page-container h2 {
+  color: #e03f00;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
 .password-page-container input {
   background: transparent;
   border: none;

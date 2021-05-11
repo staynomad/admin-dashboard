@@ -6,20 +6,25 @@ import logo from "../assets/nomad.svg";
 
 const AdminPassword = ({ setToken }) => {
   const [password, setPassword] = useState();
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const loginReq = await app.post("/adminVerify", {
-      password: password,
-    });
-    if (loginReq && loginReq.status === 200) {
-      // change this to a request for generate token
-      const token = loginReq.data.token;
-      setToken(token);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      return;
-    } else {
-      alert("Password is incorrect!");
+    setError(false);
+    try {
+      const loginReq = await app.post("/adminVerify", {
+        password: password,
+      });
+      if (loginReq && loginReq.status === 200) {
+        console.log(loginReq.status);
+        // change this to a request for generate token
+        const token = loginReq.data.token;
+        setToken(token);
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        return;
+      }
+    } catch {
+      setError(true);
     }
   };
 
@@ -33,6 +38,7 @@ const AdminPassword = ({ setToken }) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Admin Password"
         />
+        {error && <h2>Incorrect Password</h2>}
         <div>
           <button type="submit">Login</button>
         </div>
