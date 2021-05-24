@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import CreateContainerModal from "../components/CreateContainerModal";
 import Container from "../components/Container";
 import containerService from "../services/containerService";
+import houseKeepingService from "../services/houseKeepingService";
 
 const Dashboard = () => {
   const [containers, setContainers] = useState([]);
@@ -14,6 +15,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getData = async () => {
+      const res = await houseKeepingService.getUsersData();
+      console.log(res.data.payload);
       const resp = await containerService.getAllContainers();
       setContainers(resp.data.containers.reverse());
     };
