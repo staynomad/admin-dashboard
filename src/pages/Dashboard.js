@@ -6,6 +6,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 
 import Navbar from "../components/Navbar";
@@ -17,31 +18,31 @@ const Dashboard = () => {
   // const data = [
   //   {
   //     date: "5/19",
-  //     users: 23,
+  //     Users: 23,
   //   },
   //   {
   //     date: "5/20",
-  //     users: 25,
+  //     Users: 25,
   //   },
   //   {
   //     date: "5/21",
-  //     users: 30,
+  //     Users: 30,
   //   },
   //   {
   //     date: "5/22",
-  //     users: 31,
+  //     Users: 31,
   //   },
   //   {
   //     date: "5/23",
-  //     users: 35,
+  //     Users: 35,
   //   },
   //   {
   //     date: "5/24",
-  //     users: 37,
+  //     Users: 37,
   //   },
   //   {
   //     date: "5/25",
-  //     users: 39,
+  //     Users: 39,
   //   },
   // ];
 
@@ -69,13 +70,15 @@ const Dashboard = () => {
           <h1>Dashboard</h1>
         </div>
         <div className="dashboard-content">
-          <LineChart width={1000} height={400} data={data}>
-            <Line type="monotone" dataKey="Users" stroke="#00b183" />
-            <CartesianGrid stroke="#ccc" />
-            <XAxis dataKey="date" />
-            <YAxis dataKey="Users" />
-            <Tooltip />
-          </LineChart>
+          <ResponsiveContainer height="96%" width="96%">
+            <LineChart data={data}>
+              <Line type="monotone" dataKey="Users" stroke="#00b183" />
+              <CartesianGrid stroke="#ccc" />
+              <XAxis dataKey="date" />
+              <YAxis dataKey="Users" />
+              <Tooltip />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>
