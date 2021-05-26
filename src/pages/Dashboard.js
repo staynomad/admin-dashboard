@@ -8,6 +8,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 
 import Navbar from "../components/Navbar";
 import houseKeepingService from "../services/houseKeepingService";
@@ -17,6 +20,7 @@ const Dashboard = () => {
   const [listingsData, setListingsData] = useState([]);
   //"Users" or "Active Listings"
   const [shownData, setShownData] = useState("Active Listings");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // const data = [
   //   {
@@ -88,7 +92,47 @@ const Dashboard = () => {
           <h1>Dashboard</h1>
         </div>
         <div className="dashboard-content">
-          <ResponsiveContainer height="96%" width="96%">
+          <h1>{shownData}</h1>
+          <ClickAwayListener onClickAway={() => setDropdownOpen(false)}>
+            <div style={{ position: "relative" }}>
+              <div
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="listings-dropdown-button"
+              >
+                <p>{shownData}</p>
+                {dropdownOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+              </div>
+              {dropdownOpen && (
+                <div className="listings-dropdown-container">
+                  <div
+                    className="listings-dropdown-option"
+                    onClick={() => {
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    <p>All</p>
+                  </div>
+                  <div
+                    className="reservation-dropdown-option"
+                    onClick={() => {
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    <p>Active</p>
+                  </div>
+                  <div
+                    className="reservation-dropdown-option"
+                    onClick={() => {
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    <p>Expired</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </ClickAwayListener>
+          <ResponsiveContainer height="90%" width="96%">
             <LineChart data={shownData === "Users" ? usersData : listingsData}>
               <Line type="monotone" dataKey={shownData} stroke="#00b183" />
               <CartesianGrid stroke="#ccc" />

@@ -49,4 +49,9 @@
   flex: 1;
   overflow-y: auto;
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    color: $green;
+  }
 }
