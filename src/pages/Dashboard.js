@@ -49,6 +49,7 @@ const Dashboard = () => {
   useEffect(() => {
     const getData = async () => {
       const dataObject = await houseKeepingService.getUsersData();
+
       let dataArray = [];
       for (const [key, value] of Object.entries(dataObject.data.payload)) {
         dataArray.push({
@@ -57,7 +58,7 @@ const Dashboard = () => {
         });
       }
 
-      setData(dataArray);
+      setData(dataArray.slice(0).slice(-7));
     };
     getData();
   }, []);
