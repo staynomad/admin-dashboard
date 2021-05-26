@@ -5,7 +5,7 @@ const houseKeepingService = {
     return await app.get(`/housekeeping/users`);
   },
   getListingsData: async () => {
-    return await app.get(`/housekeeping/listings`);
+    return await app.get(`/housekeeping/activeListings`);
   },
 };
 

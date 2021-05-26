@@ -13,7 +13,10 @@ import Navbar from "../components/Navbar";
 import houseKeepingService from "../services/houseKeepingService";
 
 const Dashboard = () => {
-  const [data, setData] = useState([]);
+  const [usersData, setUsersData] = useState([]);
+  const [listingsData, setListingsData] = useState([]);
+  //"Users" or "Active Listings"
+  const [shownData, setShownData] = useState("Active Listings");
 
   // const data = [
   //   {
@@ -48,17 +51,31 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const dataObject = await houseKeepingService.getUsersData();
+      const {
+        data: usersDataObject,
+      } = await houseKeepingService.getUsersData();
+      const {
+        data: listingsDataObject,
+      } = await houseKeepingService.getListingsData();
 
-      let dataArray = [];
-      for (const [key, value] of Object.entries(dataObject.data.payload)) {
-        dataArray.push({
+      let usersDataArray = [];
+      for (const [key, value] of Object.entries(usersDataObject.payload)) {
+        usersDataArray.push({
           date: key,
           Users: value,
         });
       }
 
-      setData(dataArray.slice(0).slice(-7));
+      let listingsDataArray = [];
+      for (const [key, value] of Object.entries(listingsDataObject.payload)) {
+        listingsDataArray.push({
+          date: key,
+          "Active Listings": value,
+        });
+      }
+
+      setUsersData(usersDataArray.slice(0).slice(-7));
+      setListingsData(listingsDataArray.slice(0).slice(-7));
     };
     getData();
   }, []);
@@ -72,11 +89,11 @@ const Dashboard = () => {
         </div>
         <div className="dashboard-content">
           <ResponsiveContainer height="96%" width="96%">
-            <LineChart data={data}>
-              <Line type="monotone" dataKey="Users" stroke="#00b183" />
+            <LineChart data={shownData === "Users" ? usersData : listingsData}>
+              <Line type="monotone" dataKey={shownData} stroke="#00b183" />
               <CartesianGrid stroke="#ccc" />
               <XAxis dataKey="date" />
-              <YAxis dataKey="Users" />
+              <YAxis dataKey={shownData} />
               <Tooltip />
             </LineChart>
           </ResponsiveContainer>
