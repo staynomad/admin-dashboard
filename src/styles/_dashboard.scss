@@ -50,11 +50,17 @@
   flex: 1;
   overflow-y: auto;
   display: flex;
-  align-items: center;
   flex-direction: column;
   h1 {
     color: $green;
+    text-align: center;
   }
+}
+
+.graph-container {
+  display: flex;
+  flex: 1 1 0;
+  height: 0px;
 }
 
 .graphs-dropdown-positioner {
