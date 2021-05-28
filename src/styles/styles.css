@@ -231,6 +231,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  position: relative;
 }
 
 @media screen and (max-width: 1540px) {
@@ -294,6 +295,73 @@ body {
 
 .dashboard-content h1 {
   color: #00b183;
+}
+
+.graphs-dropdown-positioner {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.graphs-dropdown-button {
+  width: 150px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #00b183;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  right: 0;
+  top: 0;
+}
+
+.graphs-dropdown-button svg {
+  position: absolute;
+  right: 0;
+}
+
+.graphs-dropdown-container {
+  position: absolute;
+  width: 100%;
+  top: 32px;
+  left: 0;
+  background: #00b183;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+.graphs-dropdown-option {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+
+.graphs-dropdown-option:hover {
+  background: #00a378;
 }
 
 .containers-screen {

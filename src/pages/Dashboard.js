@@ -19,39 +19,8 @@ const Dashboard = () => {
   const [usersData, setUsersData] = useState([]);
   const [listingsData, setListingsData] = useState([]);
   //"Users" or "Active Listings"
-  const [shownData, setShownData] = useState("Active Listings");
+  const [shownData, setShownData] = useState("Users");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  // const data = [
-  //   {
-  //     date: "5/19",
-  //     Users: 23,
-  //   },
-  //   {
-  //     date: "5/20",
-  //     Users: 25,
-  //   },
-  //   {
-  //     date: "5/21",
-  //     Users: 30,
-  //   },
-  //   {
-  //     date: "5/22",
-  //     Users: 31,
-  //   },
-  //   {
-  //     date: "5/23",
-  //     Users: 35,
-  //   },
-  //   {
-  //     date: "5/24",
-  //     Users: 37,
-  //   },
-  //   {
-  //     date: "5/25",
-  //     Users: 39,
-  //   },
-  // ];
 
   useEffect(() => {
     const getData = async () => {
@@ -94,39 +63,26 @@ const Dashboard = () => {
         <div className="dashboard-content">
           <h1>{shownData}</h1>
           <ClickAwayListener onClickAway={() => setDropdownOpen(false)}>
-            <div style={{ position: "relative" }}>
+            <div className="graphs-dropdown-positioner">
               <div
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="listings-dropdown-button"
+                className="graphs-dropdown-button"
               >
                 <p>{shownData}</p>
                 {dropdownOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
               </div>
               {dropdownOpen && (
-                <div className="listings-dropdown-container">
+                <div className="graphs-dropdown-container">
                   <div
-                    className="listings-dropdown-option"
+                    className="graphs-dropdown-option"
                     onClick={() => {
                       setDropdownOpen(false);
+                      setShownData(
+                        shownData === "Users" ? "Active Listings" : "Users"
+                      );
                     }}
                   >
-                    <p>All</p>
-                  </div>
-                  <div
-                    className="reservation-dropdown-option"
-                    onClick={() => {
-                      setDropdownOpen(false);
-                    }}
-                  >
-                    <p>Active</p>
-                  </div>
-                  <div
-                    className="reservation-dropdown-option"
-                    onClick={() => {
-                      setDropdownOpen(false);
-                    }}
-                  >
-                    <p>Expired</p>
+                    <p>{shownData === "Users" ? "Active Listings" : "Users"}</p>
                   </div>
                 </div>
               )}
