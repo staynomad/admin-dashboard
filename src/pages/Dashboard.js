@@ -88,15 +88,19 @@ const Dashboard = () => {
               )}
             </div>
           </ClickAwayListener>
-          <ResponsiveContainer height="90%" width="96%">
-            <LineChart data={shownData === "Users" ? usersData : listingsData}>
-              <Line type="monotone" dataKey={shownData} stroke="#00b183" />
-              <CartesianGrid stroke="#ccc" />
-              <XAxis dataKey="date" />
-              <YAxis dataKey={shownData} />
-              <Tooltip />
-            </LineChart>
-          </ResponsiveContainer>
+          <div className="graph-container">
+            <ResponsiveContainer height="95%" width="96%">
+              <LineChart
+                data={shownData === "Users" ? usersData : listingsData}
+              >
+                <Line type="monotone" dataKey={shownData} stroke="#00b183" />
+                <CartesianGrid stroke="#ccc" />
+                <XAxis dataKey="date" />
+                <YAxis dataKey={shownData} />
+                <Tooltip />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
     </div>
