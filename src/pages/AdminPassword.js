@@ -16,7 +16,6 @@ const AdminPassword = ({ setToken }) => {
         password: password,
       });
       if (loginReq && loginReq.status === 200) {
-        console.log(loginReq.status);
         // change this to a request for generate token
         const token = loginReq.data.token;
         setToken(token);

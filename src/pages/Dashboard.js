@@ -1,21 +1,54 @@
 import React, { useState, useEffect } from "react";
-import Modal from "@material-ui/core/Modal";
-
-import AddCircleIcon from "@material-ui/icons/AddCircle";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 
 import Navbar from "../components/Navbar";
-import CreateContainerModal from "../components/CreateContainerModal";
-import Container from "../components/Container";
-import containerService from "../services/containerService";
+import houseKeepingService from "../services/houseKeepingService";
 
 const Dashboard = () => {
-  const [containers, setContainers] = useState([]);
-  const [createModal, setCreateModal] = useState(false);
+  const [usersData, setUsersData] = useState([]);
+  const [listingsData, setListingsData] = useState([]);
+  //"Users" or "Active Listings"
+  const [shownData, setShownData] = useState("Users");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
-      const resp = await containerService.getAllContainers();
-      setContainers(resp.data.containers.reverse());
+      const {
+        data: usersDataObject,
+      } = await houseKeepingService.getUsersData();
+      const {
+        data: listingsDataObject,
+      } = await houseKeepingService.getListingsData();
+
+      let usersDataArray = [];
+      for (const [key, value] of Object.entries(usersDataObject.payload)) {
+        usersDataArray.push({
+          date: key,
+          Users: value,
+        });
+      }
+
+      let listingsDataArray = [];
+      for (const [key, value] of Object.entries(listingsDataObject.payload)) {
+        listingsDataArray.push({
+          date: key,
+          "Active Listings": value,
+        });
+      }
+
+      setUsersData(usersDataArray.slice(0).slice(-7));
+      setListingsData(listingsDataArray.slice(0).slice(-7));
     };
     getData();
   }, []);
@@ -24,28 +57,46 @@ const Dashboard = () => {
     <div className="dashboard-screen">
       <Navbar />
       <div className="dashboard-container">
-        <Modal open={createModal} onClose={() => setCreateModal(false)}>
-          <CreateContainerModal
-            closeModal={() => setCreateModal(false)}
-            containers={containers}
-            setContainers={setContainers}
-          />
-        </Modal>
-
         <div className="dashboard-container-header">
           <h1>Dashboard</h1>
-          <AddCircleIcon onClick={() => setCreateModal(true)} />
         </div>
         <div className="dashboard-content">
-          {containers.map((container) => (
-            <Container
-              key={container._id}
-              title={container.title}
-              initialListings={container.listings}
-              containers={containers}
-              setContainers={setContainers}
-            />
-          ))}
+          <h1>{shownData}</h1>
+          <ClickAwayListener onClickAway={() => setDropdownOpen(false)}>
+            <div className="graphs-dropdown-positioner">
+              <div
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="graphs-dropdown-button"
+              >
+                <p>{shownData}</p>
+                {dropdownOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+              </div>
+              {dropdownOpen && (
+                <div className="graphs-dropdown-container">
+                  <div
+                    className="graphs-dropdown-option"
+                    onClick={() => {
+                      setDropdownOpen(false);
+                      setShownData(
+                        shownData === "Users" ? "Active Listings" : "Users"
+                      );
+                    }}
+                  >
+                    <p>{shownData === "Users" ? "Active Listings" : "Users"}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </ClickAwayListener>
+          <ResponsiveContainer height="90%" width="96%">
+            <LineChart data={shownData === "Users" ? usersData : listingsData}>
+              <Line type="monotone" dataKey={shownData} stroke="#00b183" />
+              <CartesianGrid stroke="#ccc" />
+              <XAxis dataKey="date" />
+              <YAxis dataKey={shownData} />
+              <Tooltip />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>
