@@ -4,7 +4,7 @@ import { app } from "../utils/axiosConfig";
 
 import logo from "../assets/nomad.svg";
 
-const AdminPassword = ({ setToken }) => {
+const AdminPassword = ({ setToken, setRefreshToken, setLoggedIn }) => {
   const [password, setPassword] = useState();
   const [error, setError] = useState(false);
 
@@ -18,8 +18,12 @@ const AdminPassword = ({ setToken }) => {
       if (loginReq && loginReq.status === 200) {
         // change this to a request for generate token
         const token = loginReq.data.token;
+        const refreshToken = loginReq.data.refreshToken;
+        const loggedIn = loginReq.data.success;
+        
         setToken(token);
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        setRefreshToken(refreshToken);
+        setLoggedIn(loggedIn);
         return;
       }
     } catch {
