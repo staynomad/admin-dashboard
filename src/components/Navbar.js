@@ -9,9 +9,9 @@ const Navbar = () => {
   //Removes tokens from the localstorage and mongoDB
   const deleteTokens = async () => {
     try {
+      await app.post("/adminVerify/logout");
       localStorage.removeItem("token");
       localStorage.removeItem("refreshToken");
-      await app.post("/adminVerify/logout");
       window.location.reload();
     } catch (err) {
       console.log(err);
