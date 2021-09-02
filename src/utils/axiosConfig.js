@@ -8,3 +8,18 @@ export const app = axios.create({
       ? "https://api.vhomesgroup.com" // production
       : "http://localhost:8080", // development
 });
+
+export const getLocalStorageTokens = (tokenType) => {
+  switch (tokenType) {
+    case "token":
+      const tokenString = localStorage.getItem("token");
+      const userToken = JSON.parse(tokenString);
+      return userToken;
+    case "refreshToken":
+      const refreshTokenString = localStorage.getItem("refreshToken");
+      const refreshToken = JSON.parse(refreshTokenString);
+      return refreshToken;
+    default:
+      return null;
+  }
+}

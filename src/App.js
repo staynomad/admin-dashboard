@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import AdminPassword from "./pages/AdminPassword";
 import Dashboard from "./pages/Dashboard";
 import Containers from "./pages/Containers";
 import Reservations from "./pages/Reservations";
 import Listings from "./pages/Listings";
-
+import { getLocalStorageTokens } from "./utils/axiosConfig";
+import { validToken } from "./utils/authAdmin"
 import "./styles/styles.css";
 
 const useToken = () => {
-  const getToken = () => {
-    const tokenString = localStorage.getItem("token");
-    const userToken = JSON.parse(tokenString);
-    return userToken;
-  };
 
-  const [token, setToken] = useState(getToken());
+  const [token, setToken] = useState(getLocalStorageTokens("token"));
 
   const saveToken = (userToken) => {
     localStorage.setItem("token", JSON.stringify(userToken));
@@ -27,12 +23,43 @@ const useToken = () => {
     token,
   };
 };
+const useRefreshToken = () => {
+
+  const [refreshToken, setRefreshToken] = useState(getLocalStorageTokens("refreshToken"));
+
+  const saveRefreshToken = (userToken) => {
+    localStorage.setItem("refreshToken", JSON.stringify(userToken));
+    setRefreshToken(userToken);
+  };
+
+  return {
+    setRefreshToken: saveRefreshToken,
+    refreshToken,
+  };
+};
+
 
 function App() {
-  const { token, setToken } = useToken();
+  const { setToken } = useToken();
+  const { setRefreshToken } = useRefreshToken();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [tokenActive, setTokenActive] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  if (!token) {
-    return <AdminPassword setToken={setToken} />;
+  //Used to verify if the access token is still valid.
+  useEffect(() => {
+    validToken().then(status => {
+      setTokenActive(status);
+      setLoading(false);
+    })
+  }, [])
+
+  if (loading) {
+    return <></>
+  }
+
+  if (!tokenActive && !loggedIn) {
+    return <AdminPassword setToken={setToken} setRefreshToken={setRefreshToken} setLoggedIn={(status) => setLoggedIn(status)} />;
   }
 
   return (
